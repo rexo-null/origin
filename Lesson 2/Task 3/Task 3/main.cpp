@@ -21,7 +21,7 @@ void struct_cout(struct adress_info& struct_cout) {
 }
 
 int main() {
-	adress_info Moscow{"Moscow", "Arbath", 12, 8, 123456};
+	adress_info Moscow{ "Moscow", "Arbath", 12, 8, 123456 };
 	adress_info Izhevsk{ "Izhevsk","Pushkina", 59, 143, 953769 };
 
 	struct_cout(Moscow);
