@@ -3,6 +3,21 @@
 
 using namespace std;
 
+enum month {
+	January = 1,
+	February = 2,
+	Marth = 3,
+	Apryl = 4,
+	May = 5,
+	June = 6,
+	July = 7,
+	August = 8,
+	September = 9,
+	October = 10,
+	November = 11,
+	December = 12
+};
+
 int main() {
 	while (true) {
 		int month_number;
@@ -10,45 +25,47 @@ int main() {
 		cout << "Enter month number: ";
 		cin >> month_number;
 
+		static_cast<month>(month_number);
+
 		switch (month_number) {
 		case 0:
 			cout << "See you soon! :)";
 			goto exit;
 			break;
-		case 1:
+		case month::January:
 			cout << "January\n";
 			break;
-		case 2:
+		case month::February:
 			cout << "February\n";
 			break;
-		case 3:
+		case month::Marth:
 			cout << "Marth\n";
 			break;
-		case 4:
+		case month::Apryl:
 			cout << "Apryl\n";
 			break;
-		case 5:
+		case month::May:
 			cout << "May\n";
 			break;
-		case 6:
+		case month::June:
 			cout << "June\n";
 			break;
-		case 7:
+		case month::July:
 			cout << "July\n";
 			break;
-		case 8:
+		case month::August:
 			cout << "August\n";
 			break;
-		case 9:
+		case month::September:
 			cout << "September\n";
 			break;
-		case 10:
+		case month::October:
 			cout << "October\n";
 			break;
-		case 11:
+		case month::November:
 			cout << "November\n";
 			break;
-		case 12:
+		case month::December:
 			cout << "December\n";
 			break;
 		default:
