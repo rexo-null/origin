@@ -10,8 +10,6 @@ public:
 		this->num2 = 0;
 	}
 
-	double num1, num2;
-
 	bool set_num1(double num1) {
 		if (num1 > 0) {
 			this->num1 = num1;
@@ -36,48 +34,50 @@ public:
 		}
 	}
 
-	void cout_calc(double num1, double num2) {
-		cout << "num1 + num2 = " << add(num1, num2) << "\n";
-		cout << "num1 - num2 = " << multiply(num1, num2) << "\n";
-		cout << "num2 - num1 = " << subtract_1_2(num1, num2) << "\n";
-		cout << "num1 * num2 = " << subtract_2_1(num1, num2) << "\n";
-		cout << "num1 / num2 = " << divide_1_2(num1, num2) << "\n";
-		cout << "num2 / num1 = " << divide_2_1(num1, num2) << "\n";
+	void cout_calc() {
+		cout << "num1 + num2 = " << add() << "\n";
+		cout << "num1 - num2 = " << subtract_1_2() << "\n";
+		cout << "num2 - num1 = " << subtract_2_1() << "\n";
+		cout << "num1 * num2 = " << multiply() << "\n";
+		cout << "num1 / num2 = " << divide_1_2() << "\n";
+		cout << "num2 / num1 = " << divide_2_1() << "\n";
 	}
 
 private:
-	double add(double num1, double num2) {
-		double result = num1 + num2;
+	double num1, num2;
+
+	double add() {
+		double result = this->num1 + this->num2;
 
 		return result;
 	}
 
-	double multiply(double num1, double num2) {
-		double result = num1 * num2;
+	double multiply() {
+		double result = this->num1 * this->num2;
 
 		return result;
 	}
 
-	double subtract_1_2(double num1, double num2) {
-		double result = num2 - num1;
+	double subtract_1_2() {
+		double result = this->num1 - this->num2;
 
 		return result;
 	}
 
-	double subtract_2_1(double num1, double num2) {
-		double result = num1 - num2;
+	double subtract_2_1() {
+		double result = this->num2 - this->num1;
 
 		return result;
 	}
 
-	double divide_1_2(double num1, double num2) {
-		double result = num1 / num2;
+	double divide_1_2() {
+		double result = this->num1 / this->num2;
 
 		return result;
 	}
 
-	double divide_2_1(double num1, double num2) {
-		double result = num2 / num1;
+	double divide_2_1() {
+		double result = this->num2 / this->num1;
 
 		return result;
 	}
@@ -101,7 +101,7 @@ int main() {
 			continue;
 		}
 
-		calculator.cout_calc(num1, num2);
+		calculator.cout_calc();
 	}
 
 	return 0;
