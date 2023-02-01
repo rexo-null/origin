@@ -28,9 +28,21 @@ public:
 		}
 
 		for (int i = 0; i < count_adress; i++) {
+			for (int j = 0; j < count_adress; j++) {
+				if (static_cast<char>(adress[i][0]) < static_cast<char>(adress[j][0])) {
+					string intermediate_string = adress[j];
+					adress[j] = adress[i];
+					adress[i] = intermediate_string;
+				}
+			}
+		}
+
+		for (int i = 0; i < count_adress; i++) {
 			adress_out << adress[i] << "\n";
-		}	
+		}
+
 	}
+	
 };
 
 int main() {
