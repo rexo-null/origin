@@ -34,7 +34,7 @@ public:
 			for (int j = 0; j < count; j++) {
 				Adress intermediate_object;
 
-				if (static_cast<char>(vector[i].city_name[0]) < static_cast<char>(vector[j].city_name[0])) {
+				if (vector[i].city_name < vector[j].city_name) {
 					intermediate_object = vector[j];
 					vector[j] = vector[i];
 					vector[i] = intermediate_object;
