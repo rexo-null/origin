@@ -8,45 +8,65 @@ using namespace std;
 
 class Adress {
 public:
-	void formated_adress_out(ifstream& adress_in, ofstream& adress_out) {
-		string intermediate_string;
-		int count_adress;
-
-		adress_in >> count_adress;
-		adress_out << count_adress << "\n";
-
-		vector<string> adress(count_adress);
-
-		for (int i = 0; i < count_adress; i++) {
-			adress.insert(adress.begin(), "");
-			for (int j = 0; j < 3; j++) {
-				adress_in >> intermediate_string;
-				adress[0] += intermediate_string + ", ";
-			}
-			adress_in >> intermediate_string;
-			adress[0] += intermediate_string;
-		}
-
-		for (int i = 0; i < count_adress; i++) {
-			adress_out << adress[i] << "\n";
-		}	
+	Adress() {
+		this->city_name = "";
+		this->street_name = "";
+		this->house_number = 0;
+		this->flat_number = 0;
 	}
+
+	void set_adress(ifstream& adress_in) {
+		adress_in >> this->city_name;
+		adress_in >> this->street_name;
+		adress_in >> this->house_number;
+		adress_in >> this->flat_number;
+	}
+
+	string get_formated_adress() {
+		string formated_adress = (this->city_name + ", " + this->street_name + ", " + to_string(this->house_number) + ", " + to_string(this->flat_number) + "\n");
+
+		return formated_adress;
+	}
+
+private:
+	string city_name;
+	string street_name;
+	int house_number;
+	int flat_number;
 };
 
 int main() {
 	ifstream fin;
 	ofstream fon;
-	Adress adress;
 
 	fin.open("in.txt");
 
 	if (fin.is_open()) {
-		fon.open("out.txt");
+		int count;
 
+		fin >> count;
+
+
+		vector<Adress> all_formated_adress(count);
+
+		for (int i = 0; i < count; i++) {
+			Adress adress;
+			adress.set_adress(fin);
+			all_formated_adress[i] = adress;
+		}
+
+		fon.open("out.txt");
+		
 		if (fon.is_open()) {
-			adress.formated_adress_out(fin, fon);
+			fon << count << "\n";
+
+			for (int i = 0; i < count; i++) {
+				fon << all_formated_adress[i].get_formated_adress();
+			}
+
 			fon.close();
 		}
+
 		else {
 			cout << "File for output is not open";
 		}
