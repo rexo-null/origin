@@ -60,7 +60,7 @@ int main() {
 		if (fon.is_open()) {
 			fon << count << "\n";
 
-			for (int i = 0; i < count; i++) {
+			for (int i = (count - 1); i >= 0; i--) {
 				fon << all_formated_adress[i].get_formated_adress();
 			}
 
