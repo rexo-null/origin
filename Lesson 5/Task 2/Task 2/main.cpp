@@ -4,25 +4,30 @@
 
 using namespace std;
 
+class Figure {
+public: Figure() {
+	Figure() {
+		this->name = name;
+	}
+}
+
+private: 
+
+};
+
 class Triangle {
 public:
-	Triangle() {
-		this->name = "Треугольник";
-		this->side_a = 10;
-		this->side_b = 20;
-		this->side_c = 30;
-		this->angle_A = 50;
-		this->angle_B = 60;
-		this->angle_C = 70;
+	Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) {
+		this->name = name;
+		this->side_a = side_a;
+		this->side_b = side_b;
+		this->side_c = side_c;
+		this->angle_A = angle_A;
+		this->angle_B = angle_B;
+		this->angle_C = angle_C;
 	}
 
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << "\n";
-	}
-
-protected:
+private:
 	string name;
 	int side_a, side_b, side_c;
 	int angle_A, angle_B, angle_C;
@@ -30,79 +35,31 @@ protected:
 
 class Right_Triangle :public Triangle{
 public:
-	Right_Triangle() {
-		this->name = "Прямоугольный Треугольник";
-		this->side_a = 10;
-		this->side_b = 20;
-		this->side_c = 30;
-		this->angle_A = 50;
-		this->angle_B = 60;
-		this->angle_C = 90;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << "\n";
-	}
+	Right_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, angle_C, name) {}
 };
 
 class Isosceles_Triangle :public Triangle {
 public:
-	Isosceles_Triangle() {
-		this->name = "Равнобедренный треугольник";
-		this->side_a = 10;
-		this->side_b = 20;
-		this->side_c = 10;
-		this->angle_A = 50;
-		this->angle_B = 60;
-		this->angle_C = 50;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << "\n";
-	}
+	Isosceles_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, angle_C, name) {}
 };
 
 class Equilateral_Triangle :public Triangle {
 public:
-	Equilateral_Triangle() {
-		this->name = "Равносторонний треугольник";
-		this->side_a = 30;
-		this->side_b = 30;
-		this->side_c = 30;
-		this->angle_A = 60;
-		this->angle_B = 60;
-		this->angle_C = 60;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << "\n";
-	}
+	Equilateral_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, angle_C, name) {}
 };
 
 class Quadrangle {
 public:
-	Quadrangle() {
-		this->name = "Четырёхугольник";
-		this->side_a = 10;
-		this->side_b = 20;
-		this->side_c = 30;
-		this->side_d = 40;
-		this->angle_A = 50;
-		this->angle_B = 60;
-		this->angle_C = 70;
-		this->angle_D = 80;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << " " << this->side_d << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << " " << this->angle_D << "\n";
+	Quadrangle(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) {
+		this->name = name;
+		this->side_a = side_a;
+		this->side_b = side_b;
+		this->side_c = side_c;
+		this->side_d = side_d;
+		this->angle_A = angle_A;
+		this->angle_B = angle_B;
+		this->angle_C = angle_C;
+		this->angle_D = angle_D;
 	}
 
 protected:
@@ -113,108 +70,38 @@ protected:
 
 class Rectangle :public Quadrangle{
 public:
-	Rectangle() {
-		this->name = "Прямоугольник";
-		this->side_a = 10;
-		this->side_b = 20;
-		this->side_c = 10;
-		this->side_d = 20;
-		this->angle_A = 90;
-		this->angle_B = 90;
-		this->angle_C = 90;
-		this->angle_D = 90;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << " " << this->side_d << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << " " << this->angle_D << "\n";
-	}
+	Rectangle(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
 };
 
 class Square :public Quadrangle {
 public:
-	Square() {
-		this->name = "Квадрат";
-		this->side_a = 20;
-		this->side_b = 20;
-		this->side_c = 20;
-		this->side_d = 20;
-		this->angle_A = 90;
-		this->angle_B = 90;
-		this->angle_C = 90;
-		this->angle_D = 90;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << " " << this->side_d << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << " " << this->angle_D << "\n";
-	}
+	Square(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) : Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
 };
 
 class Parallelogram :public Quadrangle {
 public:
-	Parallelogram() {
-		this->name = "Параллелограмм";
-		this->side_a = 20;
-		this->side_b = 20;
-		this->side_c = 20;
-		this->side_d = 20;
-		this->angle_A = 30;
-		this->angle_B = 40;
-		this->angle_C = 30;
-		this->angle_D = 40;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << " " << this->side_d << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << " " << this->angle_D << "\n";
-	}
+	Parallelogram(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
 };
 
 class Rhomb :public Quadrangle {
 public:
-	Rhomb() {
-		this->name = "Ромб";
-		this->side_a = 30;
-		this->side_b = 30;
-		this->side_c = 30;
-		this->side_d = 30;
-		this->angle_A = 30;
-		this->angle_B = 40;
-		this->angle_C = 30;
-		this->angle_D = 40;
-	}
-
-	void cout_figure_info() {
-		cout << this->name + ":\n";
-		cout << "Стороны: a=" << this->side_a << " " << this->side_b << " " << this->side_c << " " << this->side_d << "\n";
-		cout << "Углы: A=" << this->angle_A << " " << this->angle_B << " " << this->angle_C << " " << this->angle_D << "\n";
-	}
+	Rhomb(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
 };
 
-int main() {
-	Triangle triangle;
-	Right_Triangle right_triangle;
-	Isosceles_Triangle isosceles_triangle;
-	Equilateral_Triangle equilateral_triangle;
-	Quadrangle quadrangle;
-	Rectangle rectangle;
-	Square square;
-	Parallelogram parallelogram;
-	Rhomb rhomb;
+void print_info() {
+	
+}
 
-	triangle.cout_figure_info();
-	right_triangle.cout_figure_info();
-	isosceles_triangle.cout_figure_info();
-	equilateral_triangle.cout_figure_info();
-	quadrangle.cout_figure_info();
-	rectangle.cout_figure_info();
-	square.cout_figure_info();
-	parallelogram.cout_figure_info();
-	rhomb.cout_figure_info();
+int main() {
+	Triangle triangle(10, 20, 30, 50, 60, 70, "Треугольник");
+	Right_Triangle right_triangle(10, 20, 30, 50, 60, 90, "Прямоугольный треугольник");
+	Isosceles_Triangle isosceles_triangle(10, 20, 10, 50, 60, 50, "Равнобедренный треугольник");
+	Equilateral_Triangle equilateral_triangle(30, 30, 30, 60, 60, 60, "Равносторонний треугольник");
+	Quadrangle quadrangle(10, 20, 30, 40, 50, 60, 70, 80, "Четырёхугольник");
+	Rectangle rectangle(10, 20, 10, 20, 90, 90, 90, 90, "Прямоугольник");
+	Square square(20, 20, 20, 20, 90, 90, 90, 90, "Квадрат");
+	Parallelogram parallelogram(20, 30, 20, 30, 30, 40, 30, 40, "Параллелограмм");
+	Rhomb rhomb(30, 30, 30, 30, 30, 40, 30, 40, "Ромб");
 
 	return 0;
 }

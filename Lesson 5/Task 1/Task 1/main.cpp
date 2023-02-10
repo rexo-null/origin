@@ -5,9 +5,9 @@ using namespace std;
 
 class Figure {
 public:
-	Figure() {
-		this->sides_count = 0;
-		name = "Фигура";
+	Figure(int sides_count, string name) {
+		this->sides_count = sides_count;
+		this->name = name;
 	}
 
 	int get_sides_count() {
@@ -17,36 +17,30 @@ public:
 	string get_name() {
 		return this->name;
 	}
-protected:
+private:
 	string name;
 	int sides_count;
 };
 
 class Triangle : public Figure {
 public:
-	Triangle() {
-		this->sides_count = 3;
-		this->name = "Треугольник";
-	}
+	Triangle(int sides_count, string name) :Figure(sides_count, name) {}
 };
 
 class Quadrangle : public Figure {
 public:
-	Quadrangle() {
-		this->sides_count = 4;
-		this->name = "Четырёхугольник";
-	}
+	Quadrangle(int sides_count, string name) :Figure(sides_count, name) {}
 };
 
 int main() {
-	Figure figure;
-	Triangle triangle;
-	Quadrangle quadrangle;
+	Figure* figure = &Figure(0, "Фигура");
+	Figure* triangle = &Figure(3, "Треугольник");
+	Figure* quadrangle = &Figure(4, "Четырёхугольник");
 
 	cout << "Количество сторон:\n";
-	cout << figure.get_name() << ": " << figure.get_sides_count() << "\n";
-	cout << triangle.get_name() << ": " << triangle.get_sides_count() << "\n";
-	cout << quadrangle.get_name() << ": " << quadrangle.get_sides_count() << "\n";
+	cout << figure->get_name() << ": " << figure->get_sides_count() << "\n";
+	cout << triangle->get_name() << ": " << triangle->get_sides_count() << "\n";
+	cout << quadrangle->get_name() << ": " << quadrangle->get_sides_count() << "\n";
 
 	return 0;
 }
