@@ -13,6 +13,16 @@ public:
 
 	void virtual print_myself() {}
 
+	virtual bool check(int sides_count) {
+		if (this->sides_count == sides_count) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
+
 protected:
 	string get_name() {
 		return this->name;
@@ -38,6 +48,10 @@ public:
 		cout << get_name() << ":\n";
 		cout << "Стороны: a=" << this->side_a << " b=" << this->side_b << " c=" << this->side_c << "\n";
 		cout << "Углы: A=" << this->angle_A << " B=" << this->angle_B << " C=" << this->angle_C << "\n\n";
+	}
+
+	bool check() override{
+		if () {}
 	}
 
 private:
