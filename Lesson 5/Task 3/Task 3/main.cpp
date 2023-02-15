@@ -13,8 +13,12 @@ public:
 
 	void virtual print_myself() {}
 
-	virtual bool check(int sides_count) {
-		if (this->sides_count == sides_count) {
+protected:
+	string name;
+	int sides_count;
+
+	virtual bool check() {
+		if (this->sides_count == 0) {
 			return true;
 		}
 
@@ -23,14 +27,9 @@ public:
 		}
 	}
 
-protected:
 	string get_name() {
 		return this->name;
 	}
-
-private:
-	string name;
-	int sides_count;
 };
 
 class Triangle : public Figure {
@@ -46,32 +45,78 @@ public:
 
 	void print_myself() override {
 		cout << get_name() << ":\n";
+		if (check()) {
+			cout << "Правильная\n";
+		}
+		else {
+			cout << "Неправильная\n";
+		}
+		cout << "Количество сторон: " << this->sides_count << "\n";
 		cout << "Стороны: a=" << this->side_a << " b=" << this->side_b << " c=" << this->side_c << "\n";
 		cout << "Углы: A=" << this->angle_A << " B=" << this->angle_B << " C=" << this->angle_C << "\n\n";
 	}
 
-	bool check() override{
-		if () {}
-	}
-
-private:
+protected:
 	int side_a, side_b, side_c;
 	int angle_A, angle_B, angle_C;
+
+	bool check() override {
+		if ((this->angle_A + this->angle_B + this->angle_C) == 180 && this->sides_count == 3) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Right_Triangle :public Triangle {
 public:
 	Right_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, 90, name) {}
+
+protected:
+	bool check() override{
+		if (this->angle_C == 90 && this->sides_count == 3) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Isosceles_Triangle :public Triangle {
 public:
 	Isosceles_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, angle_C, name) {}
+
+protected:
+	bool check() override {
+		if (this->side_a == this->side_c && this->angle_A == this->angle_C && this->sides_count == 3) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Equilateral_Triangle :public Triangle {
 public:
 	Equilateral_Triangle(int side, int angle, string name) :Triangle(side, side, side, angle, angle, angle, name) {}
+
+protected:
+	bool check() override {
+		if (((this->side_a & this->side_b & this->side_c) == this->side_a) && ((this->angle_A & this->angle_B & this->angle_C) == 60) && this->sides_count == 3) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Quadrangle :public Figure {
@@ -89,6 +134,13 @@ public:
 
 	void print_myself() override {
 		cout << get_name() << ":\n";
+		if (check()) {
+			cout << "Правильная\n";
+		}
+		else {
+			cout << "Неправильная\n";
+		}
+		cout << "Количество сторон: " << this->sides_count << "\n";
 		cout << "Стороны: a=" << this->side_a << " b=" << this->side_b << " c=" << this->side_c << " d=" << this->side_d << "\n";
 		cout << "Углы: A=" << this->angle_A << " B=" << this->angle_B << " C=" << this->angle_C << " D=" << this->side_d << "\n\n";
 	}
@@ -96,21 +148,64 @@ public:
 protected:
 	int side_a, side_b, side_c, side_d;
 	int angle_A, angle_B, angle_C, angle_D;
+
+	bool check() override {
+		if ((this->angle_A + this->angle_B + this->angle_C + this->angle_D) == 360 && this->sides_count == 4) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Rectangle :public Quadrangle {
 public:
 	Rectangle(int side_a, int side_b, int side_c, int side_d, int angle, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle, angle, angle, angle, name) {}
+
+protected:
+	bool check() override {
+		if (this->side_a == this->side_c && this->side_b == this->side_d && ((this->angle_A & this->angle_B & this->angle_C & this->angle_D) == 90) && this->sides_count == 4) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Square :public Quadrangle {
 public:
 	Square(int side, int angle, string name) : Quadrangle(side, side, side, side, angle, angle, angle, angle, name) {}
+
+protected:
+	bool check() override {
+		if ((((this->side_a + this->side_b + this->side_c + this->side_d) / 4) == this->side_a) && this->sides_count == 4) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Parallelogram :public Quadrangle {
 public:
 	Parallelogram(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
+
+protected:
+	bool check() override {
+		if ((((this->side_a + this->side_b + this->side_c + this->side_d) / 4) == this->side_a) && this->sides_count == 4) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 class Rhomb :public Quadrangle {
