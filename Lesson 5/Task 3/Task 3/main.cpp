@@ -77,7 +77,7 @@ public:
 
 protected:
 	bool check() override{
-		if (Triangle::check() && this->angle_C == 90 && this->sides_count == 3) {
+		if (Triangle::check() && this->angle_C == 90) {
 			return true;
 		}
 
@@ -93,7 +93,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Triangle::check() && this->side_a == this->side_c && this->angle_A == this->angle_C && this->sides_count == 3) {
+		if (Triangle::check() && this->side_a == this->side_c && this->angle_A == this->angle_C) {
 			return true;
 		}
 
@@ -109,7 +109,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Triangle::check() && ((this->side_a & this->side_b & this->side_c) == this->side_a) && ((this->angle_A & this->angle_B & this->angle_C) == 60) && this->sides_count == 3) {
+		if (Triangle::check() && ((this->side_a == this->side_b && this->side_b == this->side_c && this->side_c == this->side_a) && (this->angle_A == 60 && this->angle_B == 60 && this->angle_C == 60))) {
 			return true;
 		}
 
@@ -166,7 +166,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Quadrangle::check() && this->side_a == this->side_c && this->side_b == this->side_d && ((this->angle_A & this->angle_B & this->angle_C & this->angle_D) == 90) && this->sides_count == 4) {
+		if (Quadrangle::check() && (this->side_a == this->side_c && this->side_b == this->side_d) && (this->angle_A == this->angle_B && this->angle_B == this->angle_C && this->angle_C == this->angle_D)) {
 			return true;
 		}
 
@@ -182,7 +182,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Quadrangle::check() && ((this->side_a & this->side_b & this->side_c & this->side_d) == this->side_a) && this->sides_count == 4) {
+		if (Quadrangle::check() && (this->side_a == this->side_b && this->side_b == this->side_c && this->side_c == this->side_d)) {
 			return true;
 		}
 
@@ -198,7 +198,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Quadrangle::check() && ((this->side_a & this->side_b & this->side_c & this->side_d) == this->side_a) && this->sides_count == 4) {
+		if (Quadrangle::check() && (this->side_a == this->side_b && this->side_b == this->side_c && this->side_c == this->side_d)) {
 			return true;
 		}
 
@@ -214,7 +214,7 @@ public:
 
 protected:
 	bool check() override {
-		if (Quadrangle::check() && (this->side_a & this->side_b & this->side_c & this->side_d) && ((this->angle_A == this->angle_C) && (this->angle_B == this->angle_D)) && this->sides_count == 4) {
+		if (Quadrangle::check() && (this->side_a == this->side_b && this->side_b == this->side_c && this->side_c == this->side_d) && ((this->angle_A == this->angle_C) && (this->angle_B == this->angle_D))) {
 			return true;
 		}
 

@@ -52,12 +52,12 @@ public:
 
 class Isosceles_Triangle :public Triangle {
 public:
-	Isosceles_Triangle(int side_a, int side_b, int side_c, int angle_A, int angle_B, int angle_C, string name) :Triangle(side_a, side_b, side_c, angle_A, angle_B, angle_C, name) {}
+	Isosceles_Triangle(int side_a, int side_b, int angle_A, int angle_B, string name) :Triangle(side_a, side_b, side_a, angle_A, angle_B, angle_A, name) {}
 };
 
 class Equilateral_Triangle :public Triangle {
 public:
-	Equilateral_Triangle(int side, int angle, string name) :Triangle(side, side, side, angle, angle, angle, name) {}
+	Equilateral_Triangle(int side, string name) :Triangle(side, side, side, 60, 60, 60, name) {}
 };
 
 class Quadrangle :public Figure {
@@ -86,22 +86,22 @@ protected:
 
 class Rectangle :public Quadrangle {
 public:
-	Rectangle(int side_a, int side_b, int angle, string name) :Quadrangle(side_a, side_b, side_a, side_b, angle, angle, angle, angle, name) {}
+	Rectangle(int side_a, int side_b, string name) :Quadrangle(side_a, side_b, side_a, side_b, 90, 90, 90, 90, name) {}
 };
 
 class Square :public Quadrangle {
 public:
-	Square(int side, int angle, string name) : Quadrangle(side, side, side, side, angle, angle, angle, angle, name) {}
+	Square(int side, string name) : Quadrangle(side, side, side, side, 90, 90, 90, 90, name) {}
 };
 
 class Parallelogram :public Quadrangle {
 public:
-	Parallelogram(int side_a, int side_b, int side_c, int side_d, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle_A, angle_B, angle_C, angle_D, name) {}
+	Parallelogram(int side_a, int side_b, int angle_A, int angle_B, string name) :Quadrangle(side_a, side_b, side_a, side_b, angle_A, angle_B, angle_A, angle_B, name) {}
 };
 
 class Rhomb :public Quadrangle {
 public:
-	Rhomb(int side, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side, side, side, side, angle_A, angle_B, angle_C, angle_D, name) {}
+	Rhomb(int side, int angle_A, int angle_B, string name) :Quadrangle(side, side, side, side, angle_A, angle_B, angle_A, angle_B, name) {}
 };
 
 void print_info(Figure& figure) {
@@ -112,13 +112,13 @@ int main() {
 	Figure figure(0, "Фигура");
 	Triangle triangle(10, 20, 30, 50, 60, 70, "Треугольник");
 	Right_Triangle right_triangle(10, 20, 30, 50, 60, "Прямоугольный треугольник");
-	Isosceles_Triangle isosceles_triangle(10, 20, 10, 50, 60, 50, "Равнобедренный треугольник");
-	Equilateral_Triangle equilateral_triangle(30, 60, "Равносторонний треугольник");
+	Isosceles_Triangle isosceles_triangle(10, 20, 50, 60, "Равнобедренный треугольник");
+	Equilateral_Triangle equilateral_triangle(30, "Равносторонний треугольник");
 	Quadrangle quadrangle(10, 20, 30, 40, 50, 60, 70, 80, "Четырёхугольник");
-	Rectangle rectangle(10, 20, 90, "Прямоугольник");
-	Square square(20, 90, "Квадрат");
-	Parallelogram parallelogram(20, 30, 20, 30, 30, 40, 30, 40, "Параллелограмм");
-	Rhomb rhomb(30, 30, 40, 30, 40, "Ромб");
+	Rectangle rectangle(10, 20, "Прямоугольник");
+	Square square(20, "Квадрат");
+	Parallelogram parallelogram(20, 30, 30, 40, "Параллелограмм");
+	Rhomb rhomb(30, 30, 40, "Ромб");
 
 	print_info(triangle);
 	print_info(right_triangle);
