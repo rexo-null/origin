@@ -77,7 +77,7 @@ public:
 
 protected:
 	bool check() override{
-		if (this->angle_C == 90 && this->sides_count == 3) {
+		if (Triangle::check() && this->angle_C == 90 && this->sides_count == 3) {
 			return true;
 		}
 
@@ -93,7 +93,7 @@ public:
 
 protected:
 	bool check() override {
-		if (this->side_a == this->side_c && this->angle_A == this->angle_C && this->sides_count == 3) {
+		if (Triangle::check() && this->side_a == this->side_c && this->angle_A == this->angle_C && this->sides_count == 3) {
 			return true;
 		}
 
@@ -109,7 +109,7 @@ public:
 
 protected:
 	bool check() override {
-		if (((this->side_a & this->side_b & this->side_c) == this->side_a) && ((this->angle_A & this->angle_B & this->angle_C) == 60) && this->sides_count == 3) {
+		if (Triangle::check() && ((this->side_a & this->side_b & this->side_c) == this->side_a) && ((this->angle_A & this->angle_B & this->angle_C) == 60) && this->sides_count == 3) {
 			return true;
 		}
 
@@ -166,7 +166,7 @@ public:
 
 protected:
 	bool check() override {
-		if (this->side_a == this->side_c && this->side_b == this->side_d && ((this->angle_A & this->angle_B & this->angle_C & this->angle_D) == 90) && this->sides_count == 4) {
+		if (Quadrangle::check() && this->side_a == this->side_c && this->side_b == this->side_d && ((this->angle_A & this->angle_B & this->angle_C & this->angle_D) == 90) && this->sides_count == 4) {
 			return true;
 		}
 
@@ -182,7 +182,7 @@ public:
 
 protected:
 	bool check() override {
-		if ((((this->side_a + this->side_b + this->side_c + this->side_d) / 4) == this->side_a) && this->sides_count == 4) {
+		if (Quadrangle::check() && ((this->side_a & this->side_b & this->side_c & this->side_d) == this->side_a) && this->sides_count == 4) {
 			return true;
 		}
 
@@ -198,7 +198,7 @@ public:
 
 protected:
 	bool check() override {
-		if ((((this->side_a + this->side_b + this->side_c + this->side_d) / 4) == this->side_a) && this->sides_count == 4) {
+		if (Quadrangle::check() && ((this->side_a & this->side_b & this->side_c & this->side_d) == this->side_a) && this->sides_count == 4) {
 			return true;
 		}
 
@@ -211,6 +211,17 @@ protected:
 class Rhomb :public Quadrangle {
 public:
 	Rhomb(int side, int angle_A, int angle_B, int angle_C, int angle_D, string name) :Quadrangle(side, side, side, side, angle_A, angle_B, angle_C, angle_D, name) {}
+
+protected:
+	bool check() override {
+		if (Quadrangle::check() && (this->side_a & this->side_b & this->side_c & this->side_d) && ((this->angle_A == this->angle_C) && (this->angle_B == this->angle_D)) && this->sides_count == 4) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
 };
 
 void print_info(Figure& figure) {

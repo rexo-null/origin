@@ -86,7 +86,7 @@ protected:
 
 class Rectangle :public Quadrangle {
 public:
-	Rectangle(int side_a, int side_b, int side_c, int side_d, int angle, string name) :Quadrangle(side_a, side_b, side_c, side_d, angle, angle, angle, angle, name) {}
+	Rectangle(int side_a, int side_b, int angle, string name) :Quadrangle(side_a, side_b, side_a, side_b, angle, angle, angle, angle, name) {}
 };
 
 class Square :public Quadrangle {
@@ -115,7 +115,7 @@ int main() {
 	Isosceles_Triangle isosceles_triangle(10, 20, 10, 50, 60, 50, "Равнобедренный треугольник");
 	Equilateral_Triangle equilateral_triangle(30, 60, "Равносторонний треугольник");
 	Quadrangle quadrangle(10, 20, 30, 40, 50, 60, 70, 80, "Четырёхугольник");
-	Rectangle rectangle(10, 20, 10, 20, 90, "Прямоугольник");
+	Rectangle rectangle(10, 20, 90, "Прямоугольник");
 	Square square(20, 90, "Квадрат");
 	Parallelogram parallelogram(20, 30, 20, 30, 30, 40, 30, 40, "Параллелограмм");
 	Rhomb rhomb(30, 30, 40, 30, 40, "Ромб");
