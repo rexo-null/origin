@@ -127,31 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\equilateral_triangle.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\figure.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\isosceles_triangle.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\main.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\parallelogram.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\quadrangle.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\rectangle.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\rhomb.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\right_triangle.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\square.cpp" />
-    <ClCompile Include="..\..\..\Lesson 6\Task 3\Task 3\triangle.cpp" />
     <ClCompile Include="figure_exception.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\equilateral_triangle.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\figure.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\isosceles_triangle.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\math_figure.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\parallelogram.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\quadrangle.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\rectangle.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\rhomb.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\right_triangle.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\square.h" />
-    <ClInclude Include="..\..\..\Lesson 6\Task 3\Task 3\triangle.h" />
     <ClInclude Include="figure_exception.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
