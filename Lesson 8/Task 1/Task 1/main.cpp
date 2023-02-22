@@ -3,11 +3,19 @@
 
 using namespace std;
 
-int function(string str, int forbiden_lenght) {
-	if (str.length() == forbiden_lenght) {
-		throw exception("Вы ввели слово запретной длины!");
+class bad_lenght{
+public:
+	bad_lenght(const char* message) {
+		this->error_message = message;
 	}
-}
+
+	const char* what() { return this->error_message; }
+
+private:
+	const char* error_message;
+};
+
+int function(string str, int forbiden_lenght) { return str.length() == forbiden_lenght ? throw bad_lenght("Вы ввели слово запретной длины!") : str.length(); }
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -19,12 +27,12 @@ int main() {
 	cin >> forbiden_lenght;
 
 	while (true) {
+		cout << "Введите слово: ";
+		cin >> str;
 		try {
-			cout << "Введите слово: ";
-			cin >> str;
 			cout << "Длина слова " << str << " равна: " << function(str, forbiden_lenght) << "\n";
 		}
-		catch (exception& ex) {
+		catch (bad_lenght& ex) {
 			cout << ex.what();
 			break;
 		}

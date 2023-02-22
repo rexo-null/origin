@@ -1,4 +1,5 @@
 #pragma once
+#include "figure_exception.h"
 #include <iostream>
 
 

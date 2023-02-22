@@ -1,4 +1,5 @@
 #include <iostream>
+#include "figure_exception.h"
 #include "figure.h"
 
 Figure::Figure(int sides_count, std::string name) {
