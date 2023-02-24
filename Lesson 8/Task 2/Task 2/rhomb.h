@@ -5,4 +5,7 @@
 class Rhomb :public Quadrangle {
 public:
 	Rhomb(int side, int angle_A, int angle_B, int angle_C, int angle_D, std::string name);
+
+protected:
+	void check() override;
 };
