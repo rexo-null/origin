@@ -5,81 +5,120 @@ using namespace std;
 
 class Fraction {
 private:
-	int numerator_;
-	int denominator_;
+	float numerator_;
+	float denominator_;
+
+	float division(Fraction& fraction) {
+		return (fraction.numerator_ / fraction.denominator_);
+	}
 
 public:
-	double division() {
-		return (static_cast<double>(numerator_) / static_cast<double>(denominator_));
+	Fraction(float numerator, float denominator) {
+		this->numerator_ = numerator;
+		this->denominator_ = denominator;
 	}
 
-	Fraction(int numerator, int denominator) {
-		numerator_ = numerator;
-		denominator_ = denominator;
+	string print() {
+		return (to_string(this->numerator_) + "/" + to_string(this->denominator_));
 	}
 
-	string operator + (Fraction& fraction) {
-		return (to_string((numerator_ * fraction.denominator_) + (fraction.numerator_ * denominator_)) + "/" + to_string(denominator_ * fraction.denominator_));
+	Fraction& operator + (Fraction& fraction) {
+		Fraction temp = *this;
+
+		temp.numerator_ = (temp.numerator_ * fraction.denominator_) + (fraction.numerator_ * temp.denominator_);
+		temp.denominator_ = temp.denominator_ * fraction.denominator_;
+
+		return temp;
 	}
 
-	string operator - (Fraction& fraction) {
-		return (to_string((numerator_ * fraction.denominator_) - (fraction.numerator_ * denominator_)) + "/" + to_string(denominator_ * fraction.denominator_));
+	Fraction& operator - (Fraction& fraction) {
+		Fraction temp = *this;
+
+		temp.numerator_ = (temp.numerator_ * fraction.denominator_) - (fraction.numerator_ * temp.denominator_);
+		temp.denominator_ = temp.denominator_ * fraction.denominator_;
+		
+		return temp;
 	}
 
-	string operator * (Fraction& fraction) {
-		return (to_string(numerator_ * fraction.numerator_) + "/" + to_string(denominator_ * fraction.denominator_));
+	Fraction& operator * (Fraction& fraction) {
+		Fraction temp = *this;
+
+		temp.numerator_ = (temp.numerator_ * fraction.numerator_);
+		temp.denominator_ = (temp.denominator_ * fraction.denominator_);
+
+		return temp;
 	}
 
-	string operator / (Fraction& fraction) {
-		return (to_string(numerator_ * fraction.denominator_) + "/" + to_string(denominator_ * fraction.numerator_));
+	Fraction& operator / (Fraction& fraction) {
+		Fraction temp = *this;
+
+		temp.numerator_ = (temp.numerator_ * fraction.denominator_);
+		temp.denominator_ = (temp.denominator_ * fraction.numerator_);
+
+		return temp;
 	}
 
 	Fraction& operator ++ () {
-		numerator_ = ((static_cast<double>(numerator_) / static_cast<double>(denominator_)) + 1) * denominator_;
+		this->numerator_ = (division(*this) + 1) * this->denominator_;
 
 		return *this;
 	}
 
 	Fraction operator ++ (int) {
-		return ++(*this);
+		Fraction temp = *this;
+		++(*this);
+
+		return temp;
 	}
 
 	Fraction& operator -- () {
-		numerator_ = ((static_cast<double>(numerator_) / static_cast<double>(denominator_)) - 1) * denominator_;
+		this->numerator_ = (division(*this) - 1) * this->denominator_;
 
 		return *this;
 	}
 
-	Fraction& operator -- (int) {
-		return --(*this);
+	Fraction operator -- (int) {
+		Fraction temp = *this;
+		--(*this);
+		
+		return temp;
 	}
-
 };
 
 int main() {
 	int first_frac_num, first_frac_den;
 	int second_frac_num, second_frac_den;
 
-	cout << "¬ведите числитель дроби 1: ";
+	/*cout << "¬ведите числитель дроби 1: ";
 	cin >> first_frac_num;
 	cout << "¬ведите знаменатель дроби 1: ";
 	cin >> first_frac_den;
 	cout << "¬ведите числитель дроби 2: ";
 	cin >> second_frac_num;
 	cout << "¬ведите знаменатель дроби 2: ";
-	cin >> second_frac_den;
+	cin >> second_frac_den;*/
 
-	Fraction frac_one(first_frac_num,first_frac_den);
-	Fraction frac_two(second_frac_num, second_frac_den);
+	Fraction frac_one(3, 4);
+	Fraction frac_two(4, 5);
 
-	cout << first_frac_num << "/" << first_frac_den << " + " << second_frac_num << "/" << second_frac_den << " = " << frac_one + frac_two << "\n";
-	cout << first_frac_num << "/" << first_frac_den << " - " << second_frac_num << "/" << second_frac_den << " = " << frac_one - frac_two << "\n";
-	cout << first_frac_num << "/" << first_frac_den << " * " << second_frac_num << "/" << second_frac_den << " = " << frac_one * frac_two << "\n";
-	cout << first_frac_num << "/" << first_frac_den << " / " << second_frac_num << "/" << second_frac_den << " = " << frac_one / frac_two << "\n";
-	cout << "++" << first_frac_num << "/" << first_frac_den << " * " << second_frac_num << "/" << second_frac_den << " = " << ++frac_one * frac_two << "\n";
-	cout << "«начение дроби 1 = " << ++frac_one * frac_two << "\n";
-	cout << ++frac_one * frac_two << "-- * " << second_frac_num << "/" << second_frac_den << " = " << (++frac_one)-- * frac_two << "\n";
-	cout << "«начение дроби 1 = " << (++frac_one)-- * frac_two << "\n";
+	cout << frac_one.print() << " + " << frac_two.print() << " = " << (frac_one + frac_two).print() << "\n";
+
+	cout << frac_one.print() << " - " << frac_two.print() << " = " << (frac_one - frac_two).print() << "\n";
+
+	cout << frac_one.print() << " * " << frac_two.print() << " = " << (frac_one * frac_two).print() << "\n";
+	
+	cout << frac_one.print() << " / " << frac_two.print() << " = " << (frac_one / frac_two).print() << "\n";
+
+	cout << "++ " << frac_one.print() << " * " << frac_two.print() << " = ";
+	++frac_one * frac_two;
+	cout << frac_one.print() << "\n";
+
+	cout << "«начение дроби 1 = " << frac_one.print() << "\n";
+
+	cout << frac_one.print() << "--" << " * " << frac_two.print() << " = ";
+	cout << (frac_one-- * frac_two).print() << "\n";
+
+	cout << "«начение дроби 1 = " << frac_one.print() << "\n";
 
 	return 0;
 }

@@ -27,7 +27,7 @@ public:
 		return (division() < fraction.division());
 	}
 	bool operator > (Fraction& fraction) {
-		return !(*this < fraction);
+		return (division() > fraction.division());
 	}
 	bool operator <= (Fraction& fraction) {
 		return (*this < fraction || *this == fraction);
