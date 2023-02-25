@@ -1,0 +1,15 @@
+# ninja log v5
+3	643	6990640919752897	CMakeFiles/cmake_launch.dir/main.cpp.obj	997a44c69bdc6cff
+17	803	6990642813933197	CMakeFiles/cmake_launch.dir/parallelogram.cpp.obj	c2dd64ca95e2af0c
+52	806	6990642814123238	CMakeFiles/cmake_launch.dir/triangle.cpp.obj	510ef13119f5f3cd
+39	839	6990642814203256	CMakeFiles/cmake_launch.dir/right_triangle.cpp.obj	bd6bb3d22532cbd9
+33	843	6990642814213254	CMakeFiles/cmake_launch.dir/rhomb.cpp.obj	197ff8ae0f243331
+46	850	6990642813933197	CMakeFiles/cmake_launch.dir/square.cpp.obj	fe500334db685812
+28	859	6990642814203256	CMakeFiles/cmake_launch.dir/rectangle.cpp.obj	eadd9c8631f94376
+13	888	6990642814253254	CMakeFiles/cmake_launch.dir/isosceles_triangle.cpp.obj	d9df27ad90519bb8
+22	890	6990642814553324	CMakeFiles/cmake_launch.dir/quadrangle.cpp.obj	bfbc768e0a5c2973
+3	891	6990642814433298	CMakeFiles/cmake_launch.dir/equilateral_triangle.cpp.obj	604f1bd28c2fdb98
+10	639	6990643403804635	CMakeFiles/cmake_launch.dir/figure.cpp.obj	5a01f003f673d41
+639	957	6990643406785358	cmake_launch.exe	e236292193dbcc83
+2	428	6990644827935458	CMakeFiles/cmake_launch.dir/main.cpp.obj	997a44c69bdc6cff
+429	584	6990644829167133	cmake_launch.exe	e236292193dbcc83
