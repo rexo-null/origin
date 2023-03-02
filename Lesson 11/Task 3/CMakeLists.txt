@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.0)
+project(Task3)
+add_library(DynamicLeaverLib SHARED LeaverLib.h LeaverLib.cpp)
+add_executable(LeaverExe main.cpp)
+target_link_libraries(LeaverExe DynamicLeaverLib)
