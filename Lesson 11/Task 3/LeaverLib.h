@@ -1,5 +1,5 @@
 #pragma once
-#ifdef DYNAMICLEAVERLIB_EXPORTS
+#ifdef DynamicLeaverLib_EXPORTS
 #define LEAVERLIB_API __declspec(dllexport)
 #else
 #define LEAVERLIB_API __declspec(dllimport)
