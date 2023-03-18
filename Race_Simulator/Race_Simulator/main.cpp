@@ -8,24 +8,30 @@ int main() {
 
 	int choice;
 
-	cout << "Добро пожаловать в гоночный симулятор!\n"
+	while (true) {
+		std::system("cls");
+		cout << "Добро пожаловать в гоночный симулятор!\n"
 			"1. Гонка для наземного транспорта\n"
 			"2. Гонка для воздушного транспорта\n"
 			"3. Гонка для наземного и воздушного транспорта\n"
 			"Выберите тип гонки: ";
 
-	cin >> choice;
+		cin >> choice;
 
-	if (choice == 1) {
-		ground_race();
-	}
+		if (choice == 1) {
+			ground_race();
+			continue;
+		}
 
-	else if (choice == 2) {
-		air_race();
-	}
+		else if (choice == 2) {
+			air_race();
+			continue;
+		}
 
-	else if (choice == 3) {
-		race_together();
+		else if (choice == 3) {
+			race_together();
+			continue;
+		}
 	}
 
 	return 0;

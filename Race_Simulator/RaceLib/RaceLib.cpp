@@ -4,102 +4,109 @@ void ground_race() {
 	vector<Transport*> race_team;
 
 	int distance;
-	int choice;
 
-	system("cls");
-	cout << "Укажите длину дистанции: ";
-	cin >> distance;
-	system("cls");
+	std::system("cls");
+	std::cout << "Укажите длину дистанции: ";
+	std::cin >> distance;
+	std::system("cls");
 
-start:
+	while (true) {
+		int choice;
 
-	std::cout << "1. Зарегистрировать ТС\n";
-	std::cout << "2. Начать гонку\n";
-	std::cout << "Выберите действие: ";
-	std::cin >> choice;
+		std::cout << "1. Зарегистрировать ТС\n";
+		std::cout << "2. Начать гонку\n";
+		std::cout << "Выберите действие: ";
+		std::cin >> choice;
 
-	if (choice == 1) {
-		system("cls");
+		if (choice == 1) {
+			std::system("cls");
+			while (true) {
+				std::cout << "Гонка наземного транспорта. Расстояние: " << distance << "\n";
 
-	menu:
+				if (race_team.size() > 0) {
+					std::cout << "Зарегистрированные транспортные средства: ";
+					for (int i = 0; i < race_team.size(); i++) {
+						std::cout << race_team[i]->get_name() << ", ";
+					}
+					std::cout << "\n";
+				}
 
-		std::cout << "Гонка наземного транспорта. Расстояние: " << distance << "\n";
+				else {
+					std::cout << "Зарегистрированные транспортные средства: \n";
+				}
 
-		if (race_team.size() > 0) {
-			std::cout << "Зарегистрированные транспортные средства: ";
-			for (int i = 0; i < race_team.size(); i++) {
-				std::cout << race_team[i]->get_name() << ", ";
+				std::cout << "1. Ботинки-вездеходы\n"
+					"2. Верблюд\n"
+					"3. Кентавр\n"
+					"4. Верблюд-быстроход\n"
+					"0. Закончить регистрацию\n"
+					"Выберите действие: ";
+				std::cin >> choice;
+
+				switch (choice) {
+				case 1:
+					race_team.push_back(new All_Terrain_Boots());
+					std::system("cls");
+					std::cout << "Ботинки-вездеходы успешно зарегистрированны!\n";
+					continue;
+				case 2:
+					race_team.push_back(new Camel());
+					std::system("cls");
+					std::cout << "Верблюд успешно зарегистрирован!\n";
+					continue;
+				case 3:
+					race_team.push_back(new Centaur());
+					std::system("cls");
+					std::cout << "Кентавр успешно зарегистрирован!\n";
+					continue;
+				case 4:
+					race_team.push_back(new Faster_Camel());
+					std::system("cls");
+					std::cout << "Верблюд-быстроход успешно зарегистрирован!\n";
+					continue;
+				case 0:
+					std::system("cls");
+					break;
+
+				default:
+					std::system("cls");
+					std::cout << "Такое действие отсутствует, попробуйте снова\n";
+					continue;
+				}
+				break;
 			}
-			std::cout << "\n";
+		}
+
+		else if (choice == 2) {
+			if (race_team.size() < 2) {
+				std::system("cls");
+				std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
+				continue;
+			}
+
+			else {
+				for (int i = 0; i < race_team.size(); i++) {
+					race_team[i]->race(distance);
+				}
+
+				sort(race_team);
+				show_result(race_team);
+			}
+
+			std::cout << "\n1. Провести еще одну гонку\n"
+				"2. Выйти\n"
+				"Выберите действие: ";
+			std::cin >> choice;
+
+			if (choice == 2) {
+				exit(0);
+			}
+			break;
 		}
 
 		else {
-			std::cout << "Зарегистрированные транспортные средства: \n";
-		}
-
-		std::cout << "1. Ботинки-вездеходы\n"
-			"2. Верблюд\n"
-			"3. Кентавр\n"
-			"4. Верблюд-быстроход\n"
-			"0. Закончить регистрацию\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		switch (choice) {
-		case 1:
-			race_team.push_back(new All_Terrain_Boots());
-			system("cls");
-			std::cout << "Ботинки-вездеходы успешно зарегистрированны!\n";
-			goto menu;
-		case 2:
-			race_team.push_back(new Camel());
-			system("cls");
-			std::cout << "Верблюд успешно зарегистрирован!\n";
-			goto menu;
-		case 3:
-			race_team.push_back(new Centaur());
-			system("cls");
-			std::cout << "Кентавр успешно зарегистрирован!\n";
-			goto menu;
-		case 4:
-			race_team.push_back(new Faster_Camel());
-			system("cls");
-			std::cout << "Верблюд-быстроход успешно зарегистрирован!\n";
-			goto menu;
-		case 0:
-			system("cls");
-			goto start;
-
-		default:
-			system("cls");
 			std::cout << "Такое действие отсутствует, попробуйте снова\n";
-			goto menu;
-		}
-	}
-
-	else if (choice == 2) {
-		if (race_team.size() < 2) {
-			system("cls");
-			std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
-			goto start;
-		}
-
-		else {
-			for (int i = 0; i < race_team.size(); i++) {
-				race_team[i]->race(distance);
-			}
-
-			sort(race_team);
-			show_result(race_team);
-		}
-
-		std::cout << "\n1. Провести еще одну гонку\n"
-			"2. Выйти\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		if (choice == 2) {
-			exit(0);
+			continue;
 		}
 	}
 }
@@ -108,194 +115,231 @@ void air_race() {
 	vector<Transport*> race_team;
 
 	int distance;
-	int choice;
 
-	system("cls");
+	std::system("cls");
 	cout << "Укажите длину дистанции: ";
 	cin >> distance;
-	system("cls");
+	std::system("cls");
 
-start:
+	while (true) {
+		int choice;
 
-	std::cout << "1. Зарегистрировать ТС\n";
-	std::cout << "2. Начать гонку\n";
-	std::cout << "Выберите действие: ";
-	std::cin >> choice;
+		std::cout << "1. Зарегистрировать ТС\n";
+		std::cout << "2. Начать гонку\n";
+		std::cout << "Выберите действие: ";
+		std::cin >> choice;
 
-	if (choice == 1) {
-		system("cls");
+		if (choice == 1) {
+			while (true) {
+				std::system("cls");
+				std::cout << "Гонка воздушного транспорта. Расстояние: " << distance << "\n";
 
-	menu:
+				if (race_team.size() > 0) {
+					std::cout << "Зарегистрированные транспортные средства: ";
+					for (int i = 0; i < race_team.size(); i++) {
+						std::cout << race_team[i]->get_name() << ", ";
+					}
+					std::cout << "\n";
+				}
 
-		std::cout << "Гонка воздушного транспорта. Расстояние: " << distance << "\n";
+				else {
+					std::cout << "Зарегистрированные транспортные средства: \n";
+				}
 
-		if (race_team.size() > 0) {
-			std::cout << "Зарегистрированные транспортные средства: ";
-			for (int i = 0; i < race_team.size(); i++) {
-				std::cout << race_team[i]->get_name() << ", ";
+				std::cout << "1. Орёл\n"
+					"2. Метла\n"
+					"3. Ковёр-самолёт\n"
+					"0. Закончить регистрацию\n"
+					"Выберите действие: ";
+				std::cin >> choice;
+
+				switch (choice) {
+				case 1:
+					race_team.push_back(new Eagle());
+					std::system("cls");
+					std::cout << "Орёл успешно зарегистрирован!\n";
+					continue;
+				case 2:
+					race_team.push_back(new Broom());
+					std::system("cls");
+					std::cout << "Метла успешно зарегистрирована!\n";
+					continue;
+				case 3:
+					race_team.push_back(new Magic_Carpet());
+					std::system("cls");
+					std::cout << "Ковёр-самолёт успешно зарегистрирован!\n";
+					continue;
+				case 0:
+					std::system("cls");
+					break;
+
+				default:
+					std::system("cls");
+					std::cout << "Такое действие отсутствует, попробуйте снова\n";
+					continue;
+				}
+				break;
 			}
-			std::cout << "\n";
+		}
+
+		else if (choice == 2) {
+			if (race_team.size() < 2) {
+				std::system("cls");
+				std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
+				continue;
+			}
+
+			else {
+				for (int i = 0; i < race_team.size(); i++) {
+					race_team[i]->race(distance);
+				}
+
+				sort(race_team);
+				show_result(race_team);
+			}
+
+			std::cout << "\n1. Провести еще одну гонку\n"
+				"2. Выйти\n"
+				"Выберите действие: ";
+			std::cin >> choice;
+
+			if (choice == 2) {
+				exit(0);
+			}
+			break;
 		}
 
 		else {
-			std::cout << "Зарегистрированные транспортные средства: \n";
-		}
-
-		std::cout << "1. Метла\n"
-			"2. Орёл\n"
-			"3. Ковёр-самолёт\n"
-			"0. Закончить регистрацию\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		switch (choice) {
-		case 1:
-			race_team.push_back(new Eagle());
-			system("cls");
-			std::cout << "Орёл успешно зарегистрирован!\n";
-			goto menu;
-		case 2:
-			race_team.push_back(new Broom());
-			system("cls");
-			std::cout << "Метла успешно зарегистрирована!\n";
-			goto menu;
-		case 3:
-			race_team.push_back(new Magic_Carpet());
-			system("cls");
-			std::cout << "Ковёр-самолёт успешно зарегистрирован!\n";
-			goto menu;
-		case 0:
-			system("cls");
-			goto start;
-
-		default:
-			system("cls");
 			std::cout << "Такое действие отсутствует, попробуйте снова\n";
-			goto menu;
+			continue;
 		}
 	}
-
-	else if (choice == 2) {
-		if (race_team.size() < 2) {
-			system("cls");
-			std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
-			goto start;
-		}
-
-		else {
-			for (int i = 0; i < race_team.size(); i++) {
-				race_team[i]->race(distance);
-			}
-
-			sort(race_team);
-			show_result(race_team);
-		}
-
-		std::cout << "\n1. Провести еще одну гонку\n"
-			"2. Выйти\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		if (choice == 2) {
-			exit(0);
-		}
-	}
-
 }
 
 void race_together() {
 	vector<Transport*> race_team;
 
 	int distance;
-	int choice;
 
-	system("cls");
+	std::system("cls");
 	cout << "Укажите длину дистанции: ";
 	cin >> distance;
-	system("cls");
+	std::system("cls");
 
-start:
+	while (true) {
+		int choice;
 
-	std::cout << "1. Зарегистрировать ТС\n";
-	std::cout << "2. Начать гонку\n";
-	std::cout << "Выберите действие: ";
-	std::cin >> choice;
+		std::cout << "1. Зарегистрировать ТС\n";
+		std::cout << "2. Начать гонку\n";
+		std::cout << "Выберите действие: ";
+		std::cin >> choice;
 
-	if (choice == 1) {
-		system("cls");
+		if (choice == 1) {
+			std::system("cls");
+			while (true) {
+				std::cout << "Гонка воздушного и наземного транспорта. Расстояние: " << distance << "\n";
 
-	menu:
+				if (race_team.size() > 0) {
+					std::cout << "Зарегистрированные транспортные средства: ";
+					for (int i = 0; i < race_team.size(); i++) {
+						std::cout << race_team[i]->get_name() << ", ";
+					}
+					std::cout << "\n";
+				}
 
-		std::cout << "Гонка воздушного транспорта. Расстояние: " << distance << "\n";
+				else {
+					std::cout << "Зарегистрированные транспортные средства: \n";
+				}
 
-		if (race_team.size() > 0) {
-			std::cout << "Зарегистрированные транспортные средства: ";
-			for (int i = 0; i < race_team.size(); i++) {
-				std::cout << race_team[i]->get_name() << ", ";
+				std::cout << "1. Орёл\n"
+					"2. Метла\n"
+					"3. Ковёр-самолёт\n"
+					"4. Ботинки-вездеходы\n"
+					"5. Верблюд\n"
+					"6. Кентавр\n"
+					"7. Верблюд-быстроход\n"
+					"0. Закончить регистрацию\n"
+					"Выберите действие: ";
+				std::cin >> choice;
+
+				switch (choice) {
+				case 1:
+					race_team.push_back(new Eagle());
+					std::system("cls");
+					std::cout << "Орёл успешно зарегистрирован!\n";
+					continue;
+				case 2:
+					race_team.push_back(new Broom());
+					std::system("cls");
+					std::cout << "Метла успешно зарегистрирована!\n";
+					continue;
+				case 3:
+					race_team.push_back(new Magic_Carpet());
+					std::system("cls");
+					std::cout << "Ковёр-самолёт успешно зарегистрирован!\n";
+					continue;
+				case 0:
+					std::system("cls");
+					continue;
+				case 4:
+					race_team.push_back(new All_Terrain_Boots());
+					std::system("cls");
+					std::cout << "Ботинки-вездеходы успешно зарегистрированны!\n";
+					continue;
+				case 5:
+					race_team.push_back(new Camel());
+					std::system("cls");
+					std::cout << "Верблюд успешно зарегистрирован!\n";
+					continue;
+				case 6:
+					race_team.push_back(new Centaur());
+					std::system("cls");
+					std::cout << "Кентавр успешно зарегистрирован!\n";
+					continue;
+				case 7:
+					race_team.push_back(new Faster_Camel());
+					std::system("cls");
+					std::cout << "Верблюд-быстроход успешно зарегистрирован!\n";
+					continue;
+
+				default:
+					std::system("cls");
+					std::cout << "Такое действие отсутствует, попробуйте снова\n";
+					break;
+				}
+				break;
 			}
-			std::cout << "\n";
+		}
+
+		else if (choice == 2) {
+			if (race_team.size() < 2) {
+				std::system("cls");
+				std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
+				continue;
+			}
+
+			else {
+				for (int i = 0; i < race_team.size(); i++) {
+					race_team[i]->race(distance);
+				}
+				sort(race_team);
+				show_result(race_team);
+			}
+
+			std::cout << "\n1. Провести еще одну гонку\n"
+				"2. Выйти\n"
+				"Выберите действие: ";
+			std::cin >> choice;
+
+			if (choice == 2) {
+				exit(0);
+			}
+			break;
 		}
 
 		else {
-			std::cout << "Зарегистрированные транспортные средства: \n";
-		}
-
-		std::cout << "1. Метла\n"
-			"2. Орёл\n"
-			"3. Ковёр-самолёт\n"
-			"0. Закончить регистрацию\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		switch (choice) {
-		case 1:
-			race_team.push_back(new Eagle());
-			system("cls");
-			std::cout << "Орёл успешно зарегистрирован!\n";
-			goto menu;
-		case 2:
-			race_team.push_back(new Broom());
-			system("cls");
-			std::cout << "Метла успешно зарегистрирована!\n";
-			goto menu;
-		case 3:
-			race_team.push_back(new Magic_Carpet());
-			system("cls");
-			std::cout << "Ковёр-самолёт успешно зарегистрирован!\n";
-			goto menu;
-		case 0:
-			system("cls");
-			goto start;
-
-		default:
-			system("cls");
 			std::cout << "Такое действие отсутствует, попробуйте снова\n";
-			goto menu;
-		}
-	}
-
-	else if (choice == 2) {
-		if (race_team.size() < 2) {
-			system("cls");
-			std::cout << "Ошибка! Количество ТС не хватает для гонки (минимум 2)\n";
-			goto start;
-		}
-
-		else {
-			for (int i = 0; i < race_team.size(); i++) {
-				race_team[i]->race(distance);
-			}
-			sort(race_team);
-			show_result(race_team);
-		}
-
-		std::cout << "\n1. Провести еще одну гонку\n"
-			"2. Выйти\n"
-			"Выберите действие: ";
-		std::cin >> choice;
-
-		if (choice == 2) {
-			exit(0);
+			continue;
 		}
 	}
 }
