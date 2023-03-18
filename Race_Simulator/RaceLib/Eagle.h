@@ -6,5 +6,5 @@ class Eagle : public Air_Transport {
 public:
 	Eagle();
 
-	void race(int distance);
+	void race(int distance) override;
 };

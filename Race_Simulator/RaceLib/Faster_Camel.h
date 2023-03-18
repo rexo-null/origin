@@ -6,7 +6,7 @@ class Faster_Camel : public Ground_Transport {
 public:
 	Faster_Camel();
 
-	void race(int distance);
+	void race(int distance) override;
 
 private:
 	double duration_first_rest;

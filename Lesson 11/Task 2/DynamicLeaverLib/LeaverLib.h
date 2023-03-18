@@ -1,5 +1,5 @@
 #pragma once
-#ifdef DYNAMICLEAVERLIB_EXPORTS
+#ifdef LEAVERLIB_EXPORTS
 #define LEAVERLIB_API __declspec(dllexport)
 #else
 #define LEAVERLIB_API __declspec(dllimport)
@@ -8,8 +8,8 @@
 #include <string>
 
 namespace DynamicLeaverLib {
-	class Leaver {
+	LEAVERLIB_API class Leaver {
 	public:
-		LEAVERLIB_API std::string leave(std::string name);
+		std::string leave(std::string name);
 	};
 }

@@ -12,3 +12,5 @@ string Transport::get_name() {
 int Transport::get_race_time() {
 	return this->race_time;
 }
+
+void Transport::race(int distance) {}

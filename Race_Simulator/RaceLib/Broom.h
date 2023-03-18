@@ -6,5 +6,5 @@ class Broom : public Air_Transport {
 public:
 	Broom();
 
-	void race(int distance);
+	void race(int distance) override;
 };

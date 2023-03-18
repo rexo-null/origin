@@ -12,6 +12,8 @@ public:
 
 	int get_race_time();
 
+	virtual void race(int distance);
+
 protected:
 	string name;
 	int speed;
