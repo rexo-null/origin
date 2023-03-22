@@ -7,17 +7,19 @@ Faster_Camel::Faster_Camel() : Ground_Transport("Верблюд-быстроход", 40, 10) {
 }
 
 void Faster_Camel::race(int distance) {
-	this->race_time = distance / this->speed;;
+	int time = distance / this->speed;
 
-	if (this->race_time / this->frequency_rest == 1) {
+	if (time / this->frequency_rest >= 1) {
 		this->race_time += this->duration_first_rest;
 
-		if (this->race_time / this->frequency_rest == 2) {
+		if (time / this->frequency_rest >= 2) {
 			this->race_time += this->duration_second_rest;
 
-			if (this->race_time / this->frequency_rest > 2) {
-				this->race_time += (this->race_time / this->frequency_rest - 2) * this->duration_second_rest;
+			if (time / this->frequency_rest > 2) {
+				this->race_time += (time / this->frequency_rest - 2) * this->duration_second_rest;
 			}
 		}
 	}
+
+	this->race_time += time;
 }

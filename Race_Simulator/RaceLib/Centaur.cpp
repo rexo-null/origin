@@ -5,9 +5,11 @@ Centaur::Centaur() : Ground_Transport("Кентавр", 15, 8) {
 }
 
 void Centaur::race(int distance) {
-	this->race_time = distance / this->speed;
+	int time = distance / this->speed;
 
-	if (this->race_time / this->frequency_rest > 0) {
-		this->race_time += (this->race_time / this->frequency_rest) * this->duration_rest;
+	if (time / this->frequency_rest > 0) {
+		this->race_time += (time / this->frequency_rest) * this->duration_rest;
 	}
+
+	this->race_time += time;
 }

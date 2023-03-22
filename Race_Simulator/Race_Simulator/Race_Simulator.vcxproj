@@ -135,12 +135,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\RaceLib\Show_Result.cpp" />
+    <ClCompile Include="..\RaceLib\Sort.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Racing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RaceLib\RaceLib.vcxproj">
       <Project>{190a13cb-b90d-46b3-857b-e58a45838e41}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\RaceLib\Show_Result.h" />
+    <ClInclude Include="..\RaceLib\Sort.h" />
+    <ClInclude Include="Racing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

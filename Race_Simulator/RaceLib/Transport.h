@@ -1,21 +1,27 @@
 #pragma once
 
+#ifdef RACELIB_EXPORTS
+#define LIB_API __declspec(dllexport)
+#else 
+#define LIB_API __declspec(dllimport)
+#endif
+
 #include <string>
 
 using namespace std;
 
-class Transport {
+class LIB_API Transport {
 public:
-	Transport(string name, int speed);
+	Transport(string name, double speed);
 
 	string get_name();
 
-	int get_race_time();
+	double get_race_time();
 
 	virtual void race(int distance);
 
 protected:
 	string name;
-	int speed;
-	int race_time;
+	double speed;
+	double race_time;
 };

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="All_Terraint_Boots.h" />
+    <ClInclude Include="All_Terrain_Boots.h" />
     <ClInclude Include="Broom.h" />
     <ClInclude Include="Camel.h" />
     <ClInclude Include="Centaur.h" />
@@ -27,9 +27,6 @@
     <ClInclude Include="Faster_Camel.h" />
     <ClInclude Include="Ground_Transport.h" />
     <ClInclude Include="Magic_Carpet.h" />
-    <ClInclude Include="RaceLib.h" />
-    <ClInclude Include="Show_Result.h" />
-    <ClInclude Include="Sort.h" />
     <ClInclude Include="Transport.h" />
   </ItemGroup>
   <ItemGroup>
@@ -43,9 +40,6 @@
     <ClCompile Include="Faster_Camel.cpp" />
     <ClCompile Include="Ground_Transport.cpp" />
     <ClCompile Include="Magic_Carpet.cpp" />
-    <ClCompile Include="RaceLib.cpp" />
-    <ClCompile Include="Show_Result.cpp" />
-    <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Transport.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

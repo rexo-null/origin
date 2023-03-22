@@ -1,8 +1,14 @@
 #pragma once
 
+#ifdef RACELIB_EXPORTS
+#define LIB_API __declspec(dllexport)
+#else 
+#define LIB_API __declspec(dllimport)
+#endif
+
 #include "Ground_Transport.h"
 
-class All_Terrain_Boots : public Ground_Transport {
+class LIB_API All_Terrain_Boots : public Ground_Transport {
 public:
 	All_Terrain_Boots();
 

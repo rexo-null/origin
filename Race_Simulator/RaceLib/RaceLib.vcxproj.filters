@@ -21,7 +21,7 @@
     <ClInclude Include="Ground_Transport.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="All_Terraint_Boots.h">
+    <ClInclude Include="All_Terrain_Boots.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Camel.h">
@@ -40,15 +40,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Magic_Carpet.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Sort.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Show_Result.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="RaceLib.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -84,15 +75,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Magic_Carpet.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Sort.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Show_Result.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="RaceLib.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

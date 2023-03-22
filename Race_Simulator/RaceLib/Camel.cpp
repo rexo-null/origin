@@ -6,13 +6,15 @@ Camel::Camel() : Ground_Transport("Верблюд", 10, 30) {
 }
 
 void Camel::race(int distance) {
-	this->race_time = distance / this->speed;
+	int time = distance / this->speed;
 
-	if (this->race_time / this->frequency_rest == 1) {
+	if (time / this->frequency_rest >= 1) {
 		this->race_time += this->duration_first_rest;
 
-		if (this->race_time / this->frequency_rest > 1) {
-			this->race_time += (this->race_time / this->frequency_rest - 1) * this->duration_next_rest;
+		if (time / this->frequency_rest > 1) {
+			this->race_time += (time / this->frequency_rest - 1) * this->duration_next_rest;
 		}
 	}
+
+	this->race_time += time;
 }
